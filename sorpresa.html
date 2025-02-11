@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi Chiqui 💖</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+        body {
+            font-family: 'Pacifico', cursive;
+            text-align: center;
+            background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            color: #ff4081;
+            font-size: 28px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        #buttons {
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            font-size: 20px;
+            cursor: pointer;
+            margin: 15px;
+            border: none;
+            color: white;
+            border-radius: 50px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        #yesBtn {
+            background-color: #ff4081;
+            box-shadow: 0px 4px 8px rgba(255, 64, 129, 0.4);
+        }
+
+        #yesBtn:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 6px 12px rgba(255, 64, 129, 0.6);
+        }
+
+        #noBtn {
+            background-color: #f44336;
+            position: absolute;
+        }
+
+        #message {
+            margin-top: 30px;
+            font-size: 24px;
+            color: white;
+            background: rgba(255, 64, 129, 0.8);
+            padding: 15px;
+            border-radius: 15px;
+            display: none;
+            animation: fadeIn 1s ease-in-out;
+            box-shadow: 0px 4px 8px rgba(255, 64, 129, 0.5);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        img {
+            max-width: 60%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Corazones flotantes */
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 24px;
+            animation: floatUp 2s ease-in-out infinite;
+        }
+
+        @keyframes floatUp {
+            from {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Ya que no te lo dije</h1>
+    <h2> De esta manera te quiero preguntar... ¿Quieres ser mi San Valentín? 💕</h2>
+
+    <img src="gato-cutt.gif" alt="Gatitos románticos">
+
+    <div id="buttons">
+        <button id="yesBtn" class="btn">Si💘</button>
+        <button id="noBtn" class="btn">No💔</button>
+    </div>
+
+    <p id="message">Te lobo, nos vemos el 14 chiqui 😍💖</p>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const message = document.getElementById('message');
+
+        // Evento cuando se presiona el botón "Sí"
+        yesBtn.addEventListener('click', function() {
+            message.style.display = 'block';
+            crearCorazones();
+        });
+
+        // Movimiento del botón "No" cuando se intenta presionar
+        noBtn.addEventListener('mouseover', function() {
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+        });
+
+        // Función para crear corazones flotantes
+        function crearCorazones() {
+            for (let i = 0; i < 10; i++) {
+                let heart = document.createElement('div');
+                heart.innerHTML = '❤️';
+                heart.classList.add('heart');
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = Math.random() * 2 + 1 + 's';
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 2000);
+            }
+        }
+    </script>
+
+</body>
+</html>
